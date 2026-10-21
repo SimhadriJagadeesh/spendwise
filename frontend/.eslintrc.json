@@ -1,0 +1,37 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "node": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["react", "react-hooks"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "settings": {
+    "react": {
+      "version": "18.3.1"
+    }
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/display-name": "off",
+    "no-undef": "off",
+    // This is a plain JavaScript codebase with no PropTypes declarations.
+    // The rule is a TypeScript-era convention: React itself dropped support for
+    // function-component propTypes in React 19, and the project keeps its
+    // component contracts in JSDoc/plain parameter destructuring instead.
+    "react/prop-types": "off"
+  }
+}

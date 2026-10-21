@@ -1,0 +1,44 @@
+# Compiled / build outputs
+node_modules/
+dist/
+build/
+*.log
+*.tgz
+
+# Java / Maven
+target/
+*.jar
+*.war
+*.class
+
+# IDE & Editor Settings
+.idea/
+*.iml
+*.ipr
+.vscode/
+*/.vscode/
+.settings/
+*/.settings/
+.project
+.classpath
+*.swp
+*.swo
+
+# Environment & Secrets (Never commit secrets!)
+.env
+*.env
+.env.local
+.env.*.local
+*.pem
+key.*
+
+# DB / Local Data Storage
+data/
+backend/data/
+*.db
+*.mv.db
+*.trace.db
+*.sqlite
+
+# Local verification scratch space
+.verify/

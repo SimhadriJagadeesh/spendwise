@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS transactions (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    category_id BIGINT,
+    type VARCHAR(20) NOT NULL COMMENT 'INCOME, EXPENSE, TRANSFER',
+    description VARCHAR(255),
+    merchant VARCHAR(255),
+    amount DECIMAL(19,4) NOT NULL,
+    currency VARCHAR(3) NOT NULL DEFAULT 'USD',
+    transaction_date DATE NOT NULL,
+    notes TEXT,
+    tags VARCHAR(255),
+    reviewed TINYINT(1) DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL,
+    INDEX idx_tx_user_date (user_id, transaction_date),
+    INDEX idx_tx_category (category_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
