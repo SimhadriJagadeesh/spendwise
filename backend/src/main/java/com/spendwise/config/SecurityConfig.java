@@ -78,14 +78,13 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOriginPatterns(List.of(
-            "https://*.vercel.app",
-            "http://localhost:*",
-            "http://127.0.0.1:*",
-            frontendUrl
-        ));
+        String cleanOrigin = (frontendUrl == null || frontendUrl.isBlank()) 
+                ? "http://localhost:5173" 
+                : frontendUrl.trim().replaceAll("/+$", "");
+        config.setAllowedOrigins(List.of(cleanOrigin, cleanOrigin + "/"));
+        config.setAllowedOriginPatterns(List.of("https://*.vercel.app", "http://localhost:*"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept", "X-Requested-With", "Origin"));
+        config.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept"));
         config.setAllowCredentials(true);
         config.setMaxAge(3600L);
 
