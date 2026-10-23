@@ -27,6 +27,7 @@ target/
 # Environment & Secrets (Never commit secrets!)
 .env
 *.env
+.env.render
 .env.local
 .env.*.local
 *.pem
